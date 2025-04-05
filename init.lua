@@ -7,6 +7,8 @@ dofile(minetest.get_modpath("myholeinthewall").."/register.lua")
 
 
 
-
+if minetest.get_modpath("myores") then
+	dofile(minetest.get_modpath("myholeinthewall").."/myores.lua")
+end
 
 
