@@ -5,7 +5,7 @@ local anzahl = {}
 function minetest.get_mydrillpress_formspec(pos)
     local spos = pos.x .. "," .. pos.y .. "," ..pos.z
     local formspec =
-        "size[9,6]"..
+        "size[9,8]"..
 		"background[-0.15,-0.25;9.5,8;myholeinthewall_background.png]"..
         "list[nodemeta:".. spos .. ";main;1.5,0.5;6,2;]"..
         "list[current_player;main;0.5,3;8,4;]"
