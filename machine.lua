@@ -478,6 +478,8 @@ if fields["diamondh"] then
 							{"myores:marble",			"marble"},
 							{"myores:chromium",			"chromium"},
 							{"myores:manganese",		"manganese"},
+							{"myores:quartz",			"quartz"},
+							{"myores:chalcopyrite",		"chalcopyrite"},
 							}
 
 		for i in ipairs(mat_table) do
