@@ -89,6 +89,78 @@ myholeinthewall.register_all(
 	"normal"
 	)
 
+myholeinthewall.register_all(
+	"cobalt", 
+	"Cobalt", 
+	"myores_cobalt.png",
+	{cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1},
+	"myores:cobalt",
+	"normal"
+	)
+myholeinthewall.register_all(
+	"uvarovite", 
+	"Uvarovite", 
+	"myores_uvarovite.png",
+	{cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1},
+	"myores:uvarovite",
+	"normal"
+	)
+myholeinthewall.register_all(
+	"selenite", 
+	"Selenite", 
+	"myores_selenite.png",
+	{cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1},
+	"myores:selenite",
+	"normal"
+	)
+myholeinthewall.register_all(
+	"miserite", 
+	"Miserite", 
+	"myores_miserite.png",
+	{cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1},
+	"myores:miserite",
+	"normal"
+	)
+myholeinthewall.register_all(
+	"limonite", 
+	"Limonite", 
+	"myores_limonite.png",
+	{cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1},
+	"myores:limonite",
+	"normal"
+	)
+myholeinthewall.register_all(
+	"sulfur", 
+	"Sulfur", 
+	"myores_sulfur.png",
+	{cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1},
+	"myores:sulfur",
+	"normal"
+	)
+myholeinthewall.register_all(
+	"lapis_lazuli", 
+	"Lapis Lazuli", 
+	"myores_lapis_lazuli.png",
+	{cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1},
+	"myores:lapis_lazuli",
+	"normal"
+	)
+myholeinthewall.register_all(
+	"emerald", 
+	"Emerald", 
+	"myores_emerald.png",
+	{cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1},
+	"myores:emerald",
+	"normal"
+	)
+myholeinthewall.register_all(
+	"amethyst", 
+	"Amethyst", 
+	"myores_amethyst.png",
+	{cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1},
+	"myores:amethyst",
+	"normal"
+	)
 
 
 
