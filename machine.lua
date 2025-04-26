@@ -489,6 +489,23 @@ if fields["diamondh"] then
 							{"myores:lapis_lazuli",		"lapis_lazuli"},
 							{"myores:emerald",			"emerald"},
 							{"myores:amethyst",			"amethyst"},
+					
+							{"mywhiteblock:block_black",    "block_black"},
+							{"mywhiteblock:block_blue",     "block_blue"},
+							{"mywhiteblock:block_brown",    "block_brown"},
+							{"mywhiteblock:block_cyan",     "block_cyan"},
+							{"mywhiteblock:block_darkgreen","block_darkgreen"},
+							{"mywhiteblock:block_darkgrey", "block_darkgrey"},
+							{"mywhiteblock:block_green",    "block_green"},
+							{"mywhiteblock:block_grey",     "block_grey"},
+							{"mywhiteblock:block_magenta",  "block_magenta"},
+							{"mywhiteblock:block_orange",   "block_orange"},
+							{"mywhiteblock:block_pink",     "block_pink"},
+							{"mywhiteblock:block_red",      "block_red"},
+							{"mywhiteblock:block_violet",   "block_violet"},
+							{"mywhiteblock:block_white",    "block_white"},
+							{"mywhiteblock:block_yellow",   "block_yellow"},
+							{"mywhiteblock:block",			"block"},
 							}
 
 		for i in ipairs(mat_table) do
