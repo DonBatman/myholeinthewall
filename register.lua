@@ -3,18 +3,20 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_sandstone", 
 	"Sandstone", 
 	"default_sandstone.png",
-	{cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1},
+	"{cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1}",
 	"default:sandstone",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_desert_sand", 
 	"Desert Sand", 
 	"default_desert_sand.png",
-	{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1},
+	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
 	"default:desert_sand",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_clay", 
 	"Clay", 
@@ -23,6 +25,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:clay",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_cobble", 
 	"Cobble", 
@@ -31,6 +34,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:cobble",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_stone", 
 	"Stone", 
@@ -39,6 +43,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:stone",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_cactus", 
 	"Cactus", 
@@ -47,6 +52,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:cactus",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_sand", 
 	"Sand", 
@@ -55,6 +61,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:sand",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_desert_stone", 
 	"Desert Stone", 
@@ -63,6 +70,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:desert_stone",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_wood", 
 	"Wood", 
@@ -71,6 +79,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:wood",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_pine_wood", 
 	"Pine Wood", 
@@ -79,22 +88,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:pine_wood",
 	"normal"
 	)
-myholeinthewall.register_all(--material, description, image, groups, craft item
-	"default_aspen_wood", 
-	"Aspen Wood", 
-	"default_aspen_wood.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:aspen_wood",
-	"normal"
-	)
-myholeinthewall.register_all(--material, description, image, groups, craft item
-	"default_acacia_wood", 
-	"Acacia Wood", 
-	"default_acacia_wood.png",
-	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
-	"default:acacia_wood",
-	"normal"
-	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_dirt", 
 	"Dirt", 
@@ -103,6 +97,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:dirt",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_brick", 
 	"Brick", 
@@ -111,6 +106,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:brick",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_bronze_block", 
 	"Bronze Block", 
@@ -119,6 +115,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:bronzeblock",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_coal_block", 
 	"Coal Block", 
@@ -127,6 +124,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:coalblock",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_copper_block", 
 	"Copper Block", 
@@ -135,6 +133,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:copperblock",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_desert_cobble", 
 	"Desert Cobble", 
@@ -143,6 +142,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:desert_cobble",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_diamond_block", 
 	"Diamond Block", 
@@ -151,6 +151,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:diamondblock",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_glass", 
 	"Glass", 
@@ -159,6 +160,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:glass",
 	"glasslike"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_gold_block", 
 	"Gold Block", 
@@ -167,6 +169,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:goldblock",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_gravel", 
 	"Gravel", 
@@ -175,6 +178,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:gravel",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_ice", 
 	"Ice", 
@@ -183,6 +187,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:ice",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_jungletree", 
 	"Jungle Tree", 
@@ -191,6 +196,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:jungletree",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_junglewood", 
 	"Jungle Wood", 
@@ -199,6 +205,16 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:junglewood",
 	"normal"
 	)
+
+myholeinthewall.register_all(--material, description, image, groups, craft item
+	"default_mese", 
+	"Mese", 
+	"default_mese_block.png",
+	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
+	"default:mese",
+	"normal"
+	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_mossycobble", 
 	"Mossy Cobble", 
@@ -207,6 +223,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:mossycobble",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_obsidian", 
 	"Obsidian", 
@@ -215,6 +232,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:obsidian",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item, drawtype
 	"default_obsidian_glass", 
 	"Obsidian Glass", 
@@ -223,6 +241,16 @@ myholeinthewall.register_all(--material, description, image, groups, craft item,
 	"default:obsidian_glass",
 	"glasslike"
 	)
+
+myholeinthewall.register_all(--material, description, image, groups, craft item
+	"default_obsidian_brick",
+	"Obsidian Brick", 
+	"default_obsidian_brick.png",
+	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
+	"default:obsidianbrick",
+	"normal"
+	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_pine_tree", 
 	"Pine Tree", 
@@ -231,6 +259,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:pine_tree",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_sandstone_brick", 
 	"Sandstone Brick", 
@@ -239,6 +268,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:sandstonebrick",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_steel_block", 
 	"Steel Block", 
@@ -247,6 +277,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:steelblock",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_stone_brick", 
 	"Stone Brick", 
@@ -255,6 +286,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:stonebrick",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default_tree", 
 	"Tree", 
@@ -263,6 +295,7 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"default:tree",
 	"normal"
 	)
+
 myholeinthewall.register_all(--material, description, image, groups, craft item
 	"farming_straw", 
 	"Straw", 

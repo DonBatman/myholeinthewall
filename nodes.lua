@@ -1,12 +1,12 @@
 function myholeinthewall.register_all(mat, desc, image, mygroups, craft, drawtype)
 
-minetest.register_node("myholeinthewall:diamond_"..mat,{
---	description = desc.." Diamond",
+core.register_node("myholeinthewall:diamond_"..mat,{
+	description = desc.." Diamond",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -47,15 +47,15 @@ minetest.register_node("myholeinthewall:diamond_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0.5},
 		}	
 	},
-	on_place = minetest.rotate_node,
+	on_place = core.rotate_node,
 })
-minetest.register_node("myholeinthewall:diamond_rough_"..mat,{
---	description = desc.." Rough Diamond",
+core.register_node("myholeinthewall:diamond_rough_"..mat,{
+	description = desc.." Rough Diamond",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -84,15 +84,15 @@ minetest.register_node("myholeinthewall:diamond_rough_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0.5},
 		}	
 	},
-	on_place = minetest.rotate_node,
+	on_place = core.rotate_node,
 })
-minetest.register_node("myholeinthewall:cross_"..mat,{
---	description = desc.." Cross",
+core.register_node("myholeinthewall:cross_"..mat,{
+	description = desc.." Cross",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -113,16 +113,16 @@ minetest.register_node("myholeinthewall:cross_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0.5},
 		}	
 	},
-	on_place = minetest.rotate_node,
+	on_place = core.rotate_node,
 })
 
-minetest.register_node("myholeinthewall:cross_iron_"..mat,{
---	description = desc.." Iron Cross",
+core.register_node("myholeinthewall:cross_iron_"..mat,{
+	description = desc.." Iron Cross",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -155,15 +155,15 @@ minetest.register_node("myholeinthewall:cross_iron_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0.5},
 		}	
 	},
-	on_place = minetest.rotate_node,
+	on_place = core.rotate_node,
 })
-minetest.register_node("myholeinthewall:o_"..mat,{
---	description = desc.." O",
+core.register_node("myholeinthewall:o_"..mat,{
+	description = desc.." O",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -192,14 +192,14 @@ minetest.register_node("myholeinthewall:o_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0.5},
 		}	
 	},
-	on_place = minetest.rotate_node,
-})minetest.register_node("myholeinthewall:x_"..mat,{
---	description = desc.." X",
+	on_place = core.rotate_node,
+})core.register_node("myholeinthewall:x_"..mat,{
+	description = desc.." X",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -225,18 +225,18 @@ minetest.register_node("myholeinthewall:o_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0.5},
 		}	
 	},
-	on_place = minetest.rotate_node,
+	on_place = core.rotate_node,
 })
 
 --------------------------------------------------------------------------------------------
 --Half
-minetest.register_node("myholeinthewall:diamond_half_"..mat,{
---	description = desc.." Diamond",
+core.register_node("myholeinthewall:diamond_half_"..mat,{
+	description = desc.." Diamond",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -277,15 +277,15 @@ minetest.register_node("myholeinthewall:diamond_half_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0},
 		}	
 	},
-	on_place = minetest.rotate_node,
+	on_place = core.rotate_node,
 })
-minetest.register_node("myholeinthewall:diamond_rough_half_"..mat,{
---	description = desc.." Rough Diamond",
+core.register_node("myholeinthewall:diamond_rough_half_"..mat,{
+	description = desc.." Rough Diamond",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -314,15 +314,15 @@ minetest.register_node("myholeinthewall:diamond_rough_half_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0},
 		}	
 	},
-	on_place = minetest.rotate_node,
+	on_place = core.rotate_node,
 })
-minetest.register_node("myholeinthewall:cross_half_"..mat,{
---	description = desc.." Cross",
+core.register_node("myholeinthewall:cross_half_"..mat,{
+	description = desc.." Cross",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -343,16 +343,16 @@ minetest.register_node("myholeinthewall:cross_half_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0},
 		}	
 	},
-	on_place = minetest.rotate_node,
+	on_place = core.rotate_node,
 })
 
-minetest.register_node("myholeinthewall:cross_iron_half_"..mat,{
---	description = desc.." Iron Cross",
+core.register_node("myholeinthewall:cross_iron_half_"..mat,{
+	description = desc.." Iron Cross",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -385,15 +385,15 @@ minetest.register_node("myholeinthewall:cross_iron_half_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0},
 		}	
 	},
-	on_place = minetest.rotate_node,
+	on_place = core.rotate_node,
 })
-minetest.register_node("myholeinthewall:o_half_"..mat,{
---	description = desc.." O",
+core.register_node("myholeinthewall:o_half_"..mat,{
+	description = desc.." O",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -422,14 +422,14 @@ minetest.register_node("myholeinthewall:o_half_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0},
 		}	
 	},
-	on_place = minetest.rotate_node,
-})minetest.register_node("myholeinthewall:x_half_"..mat,{
---	description = desc.." X",
+	on_place = core.rotate_node,
+})core.register_node("myholeinthewall:x_half_"..mat,{
+	description = desc.." X",
 	tiles = {image},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {crumbly = 1, cracky = 2},
+	groups = {crumbly = 1, cracky = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = "fixed",
@@ -455,7 +455,7 @@ minetest.register_node("myholeinthewall:o_half_"..mat,{
 			{-0.5,-0.5,-0.5,0.5,0.5,0},
 		}	
 	},
-	on_place = minetest.rotate_node,
+	on_place = core.rotate_node,
 })
 end
 

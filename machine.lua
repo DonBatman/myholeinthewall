@@ -2,13 +2,12 @@ local material = {}
 local shape = {}
 local make_ok = {}
 local anzahl = {}
-function minetest.get_mydrillpress_formspec(pos)
+function core.get_mydrillpress_formspec(pos)
     local spos = pos.x .. "," .. pos.y .. "," ..pos.z
     local formspec =
-        "size[9,8]"..
-		"background[-0.15,-0.25;9.5,8;myholeinthewall_background.png]"..
-        "list[nodemeta:".. spos .. ";main;1.5,0.5;6,2;]"..
-        "list[current_player;main;0.5,3;8,4;]"
+        "size[9,6]"..
+        "list[nodemeta:".. spos .. ";main;1.5,0.5;6,1;]"..
+        "list[current_player;main;0.5,2;8,4;]"
     return formspec
 end
 
@@ -18,7 +17,7 @@ local function has_mydrillpress_privilege(meta, player)
     end
     return true
 end
-minetest.register_node("myholeinthewall:machine", {
+core.register_node("myholeinthewall:machine", {
 	description = "Hole Machine",
 	inventory_image = "myholeinthewall_inventory_image.png",
 	tiles = {
@@ -52,28 +51,28 @@ minetest.register_node("myholeinthewall:machine", {
 	},
     on_place = function(itemstack, placer, pointed_thing)
         local pos = pointed_thing.above
-        if minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" then
-            minetest.chat_send_player( placer:get_player_name(), "Not enough space to place this!" )
+        if core.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" then
+            core.chat_send_player( placer:get_player_name(), "Not enough space to place this!" )
             return
         end
-        return minetest.item_place(itemstack, placer, pointed_thing)
+        return core.item_place(itemstack, placer, pointed_thing)
     end,
 
 	after_destruct = function(pos, oldnode)
-		minetest.set_node({x = pos.x, y = pos.y + 1, z = pos.z},{name = "air"})
+		core.set_node({x = pos.x, y = pos.y + 1, z = pos.z},{name = "air"})
 	end,
 
 	after_place_node = function(pos, placer)
-		minetest.set_node({x = pos.x, y = pos.y + 1, z = pos.z},{name = "myholeinthewall:machine_top", param2=minetest.dir_to_facedir(placer:get_look_dir())});
+		core.set_node({x = pos.x, y = pos.y + 1, z = pos.z},{name = "myholeinthewall:machine_top", param2=core.dir_to_facedir(placer:get_look_dir())});
 	
 
-        local meta = minetest.get_meta(pos)
+        local meta = core.get_meta(pos)
         meta:set_string("owner", placer:get_player_name() or "")
         meta:set_string("infotext", "Drill Press (owned by "..
                 meta:get_string("owner")..")")
     end,
     on_construct = function(pos)
-        local meta = minetest.get_meta(pos)
+        local meta = core.get_meta(pos)
         meta:set_string("infotext", "Drill Press")
         meta:set_string("owner", "")
         local inv = meta:get_inventory()
@@ -82,7 +81,7 @@ minetest.register_node("myholeinthewall:machine", {
 
     can_dig = function(pos,player)
 
-	local meta = minetest.env:get_meta({x=pos.x,y=pos.y+1,z=pos.z});
+	local meta = core.env:get_meta({x=pos.x,y=pos.y+1,z=pos.z});
 	local inv = meta:get_inventory()
 	if not inv:is_empty("ingot") then
 		return false
@@ -92,7 +91,7 @@ minetest.register_node("myholeinthewall:machine", {
 	
 
 
-        local meta = minetest.get_meta(pos);
+        local meta = core.get_meta(pos);
         local inv = meta:get_inventory()
 
         return inv:is_empty("main") and has_mydrillpress_privilege(meta, player)
@@ -101,57 +100,57 @@ minetest.register_node("myholeinthewall:machine", {
 
     end,
     allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-        local meta = minetest.get_meta(pos)
+        local meta = core.get_meta(pos)
         if not has_mydrillpress_privilege(meta, player) then
-            minetest.log("action", player:get_player_name()..
+            core.log("action", player:get_player_name()..
                     " tried to access a drill press belonging to "..
                     meta:get_string("owner").." at "..
-                    minetest.pos_to_string(pos))
+                    core.pos_to_string(pos))
             return 0
         end
         return count
     end,
     allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-        local meta = minetest.get_meta(pos)
+        local meta = core.get_meta(pos)
         if not has_mydrillpress_privilege(meta, player) then
-            minetest.log("action", player:get_player_name()..
+            core.log("action", player:get_player_name()..
                     " tried to access a drill press belonging to "..
                     meta:get_string("owner").." at "..
-                    minetest.pos_to_string(pos))
+                    core.pos_to_string(pos))
             return 0
         end
         return stack:get_count()
     end,
     allow_metadata_inventory_take = function(pos, listname, index, stack, player)
-        local meta = minetest.get_meta(pos)
+        local meta = core.get_meta(pos)
         if not has_mydrillpress_privilege(meta, player) then
-            minetest.log("action", player:get_player_name()..
+            core.log("action", player:get_player_name()..
                     " tried to access a drill press belonging to "..
                     meta:get_string("owner").." at "..
-                    minetest.pos_to_string(pos))
+                    core.pos_to_string(pos))
             return 0
         end
         return stack:get_count()
     end,
     on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-        minetest.log("action", player:get_player_name()..
-                " moves stuff into drill press at "..minetest.pos_to_string(pos))
+        core.log("action", player:get_player_name()..
+                " moves stuff into drill press at "..core.pos_to_string(pos))
     end,
     on_metadata_inventory_put = function(pos, listname, index, stack, player)
-        minetest.log("action", player:get_player_name()..
-                " moves stuff into drill press at "..minetest.pos_to_string(pos))
+        core.log("action", player:get_player_name()..
+                " moves stuff into drill press at "..core.pos_to_string(pos))
     end,
     on_metadata_inventory_take = function(pos, listname, index, stack, player)
-        minetest.log("action", player:get_player_name()..
-                " takes stuff from drill press at "..minetest.pos_to_string(pos))
+        core.log("action", player:get_player_name()..
+                " takes stuff from drill press at "..core.pos_to_string(pos))
     end,
     on_rightclick = function(pos, node, clicker)
-        local meta = minetest.get_meta(pos)
+        local meta = core.get_meta(pos)
         if has_mydrillpress_privilege(meta, clicker) then
-            minetest.show_formspec(
+            core.show_formspec(
                 clicker:get_player_name(),
                 "myholeinthewall:machine",
-                minetest.get_mydrillpress_formspec(pos)
+                core.get_mydrillpress_formspec(pos)
             )
         end
     end,
@@ -165,7 +164,7 @@ minetest.register_node("myholeinthewall:machine", {
 })
 
 
-minetest.register_node("myholeinthewall:machine_top", {
+core.register_node("myholeinthewall:machine_top", {
 	description = "Hole Machine",
 	tiles = {
 		"myholeinthewall_machinetop_top.png",
@@ -195,12 +194,12 @@ minetest.register_node("myholeinthewall:machine_top", {
 	},
 
 	after_destruct = function(pos, oldnode)
-		minetest.set_node({x = pos.x, y = pos.y - 1, z = pos.z},{name = "air"})
+		core.set_node({x = pos.x, y = pos.y - 1, z = pos.z},{name = "air"})
 	end,
 
 
 can_dig = function(pos,player)
-	local meta = minetest.get_meta(pos);
+	local meta = core.get_meta(pos);
 	local inv = meta:get_inventory()
 	if not inv:is_empty("ingot") then
 		return false
@@ -208,14 +207,14 @@ can_dig = function(pos,player)
 		return false
 	end
     
-        local meta = minetest.get_meta({x=pos.x,y=pos.y-1,z=pos.z});
+        local meta = core.get_meta({x=pos.x,y=pos.y-1,z=pos.z});
         local inv = meta:get_inventory()
         return inv:is_empty("main") and has_mydrillpress_privilege(meta, player)
     
 end,
 
 on_construct = function(pos)
-	local meta = minetest.get_meta(pos)
+	local meta = core.get_meta(pos)
 	meta:set_string("formspec", "invsize[8,9;]"..
 		"background[-0.15,-0.25;8.40,9.75;myholeinthewall_background.png]"..
 		"list[current_name;ingot;5.5,1;1,1;]"..
@@ -247,7 +246,7 @@ on_construct = function(pos)
 end,
 
 on_receive_fields = function(pos, formname, fields, sender)
-	local meta = minetest.get_meta(pos)
+	local meta = core.get_meta(pos)
 	local inv = meta:get_inventory()
 
 if fields["diamond"] 
@@ -378,144 +377,243 @@ if fields["diamondh"] then
 ----------------------------------------------------------------------------------
 --register nodes
 ----------------------------------------------------------------------------------
-		local mat_table = {
-							{"default:sandstone",		"default_sandstone"},
-							{"default:desert_sand",		"default_desert_sand"},
-							{"default:clay",			"default_clay"},
-							{"default:desert_stone",	"default_desert_stone"},
-							{"default:cobble",			"default_cobble"},
-							{"default:stone",			"default_stone"},
-							{"default:cactus",			"default_cactus"},
-							{"default:sand",			"default_sand"},
-							{"default:wood",			"default_wood"},
-							{"default:pine_wood",		"default_pine_wood"},
-							{"default:dirt",			"default_dirt"},
-							{"default:brick",			"default_brick"},
-							{"default:bronzeblock",		"default_bronze_block"},
-							{"default:coalblock",		"default_coal_block"},
-							{"default:copperblock",		"default_copper_block"},
-							{"default:desert_cobble",	"default_desert_cobble"},
-							{"default:diamondblock",	"default_diamond_block"},
-							{"default:glass",			"default_glass"},
-							{"default:goldblock",		"default_gold_block"},
-							{"default:gravel",			"default_gravel"},
-							{"default:ice",				"default_ice"},
-							{"default:jungletree",		"default_jungletree"},
-							{"default:junglewood",		"default_junglewood"},
-							{"default:aspen_wood",		"default_aspen_wood"},
-							{"default:acacia_wood",		"default_acacia_wood"},
-							{"default:mossycobble",		"default_mossycobble"},
-							{"default:obsidian",		"default_obsidian"},
-							{"default:obsidian_glass",	"default_obsidian_glass"},
-							{"default:sanddstone_brick","default_sandstone_brick"},
-							{"default:pinetree",		"default_pinetree"},
-							{"default:steelblock",		"default_steel_block"},
-							{"default:stonebrick",		"default_stone_brick"},
-							{"default:tree",			"default_tree"},
-							{"farming:straw",			"farming_straw"},
-							--Wool
-							{"wool:white",		"wool_white"},
-							{"wool:black",		"wool_black"},
-							{"wool:blue",		"wool_blue"},
-							{"wool:brown",		"wool_brown"},
-							{"wool:cyan",		"wool_brown"},
-							{"wool:dark_green",	"wool_dark_green"},
-							{"wool:dark_grey",	"wool_dark_grey"},
-							{"wool:green",		"wool_green"},
-							{"wool:grey",		"wool_grey"},
-							{"wool:magenta",	"wool_magenta"},
-							{"wool:orange",		"wool_orange"},
-							{"wool:pink",		"wool_pink"},
-							{"wool:red",		"wool_red"},
-							{"wool:violet",		"wool_violet"},
-							{"wool:yellow",		"wool_yellow"},
-							--batmod
-							{"bat_blocks:bat_cobble",		"bat_cobble"},
-							{"bat_blocks:bat_cobble_white",	"bat_cobble_white"},
-							{"bat_blocks:bat_cobble_tan",	"bat_cobble_tan"},
-							{"bat_blocks:bat_pavers",		"bat_pavers"},
-							{"bat_blocks:bat_block",		"bat_block"},
-							{"bat_blocks:bat_tile",			"bat_tile"},
-							{"bat_blocks:bat_diag",			"bat_diag"},
-							{"bat_blocks:bat_x",			"bat_x_block"},
-							{"bat_blocks:bat_brick",		"bat_brick"},
-							{"bat_blocks:bat_smbrick",		"bat_smbrick"},
-							--castle
-							{"castle:dungeon_stone",		"dungeon_stone"},
-							{"castle:pavement",				"pavement_brick"},
-							{"castle:rubble",				"rubble"},
-							{"castle:roofslate",			"slate"},
-							{"castle:stonewall",			"stonewall"},
-							--moreblocks
-							{"moreblocks:cactus_brick",			"cactus_brick"},
-							{"moreblocks:cactus_checker",		"cactus_checker"},
-							{"moreblocks:coal_stone_bricks",	"coal_stone_bricks"},
-							{"moreblocks:circle_stone_bricks",	"circle_stone_bricks"},
-							{"moreblocks:iron_checker",			"iron_checker"},
-							{"moreblocks:iron_stone_bricks",	"iron_stone_bricks"},
-							{"moreblocks:plankstone",			"plankstone"},
-							{"moreblocks:stone_tile",			"stone_tile"},
-							{"moreblocks:wood_tile_center",		"wood_tile_center"},
-							{"moreblocks:wood_tile_full",		"wood_tile_full"},
-							--moretrees
-							{"moretrees:apple_planks",			"apple_tree"},
-							{"moretrees:beech_planks",			"beech"},
-							{"moretrees:oak_planks",			"oak"},
-							{"moretrees:sequoia_planks",		"sequoia"},
-							{"moretrees:birch_planks",			"birch"},
-							{"moretrees:palm_planks",			"palm"},
-							{"moretrees:spruce_planks",			"spruce"},
-							{"moretrees:willow_planks",			"willow"},
-							{"moretrees:rubber_tree_planks",	"rubber_tree"},
-							{"moretrees:fir_planks",			"fir"},
-							--myores
-							{"myores:slate",			"slate"},
-							{"myores:shale",			"shale"},
-							{"myores:schist",			"schist"},
-							{"myores:gneiss",			"gneiss"},
-							{"myores:basalt",			"basalt"},
-							{"myores:granite",			"granite"},
-							{"myores:marble",			"marble"},
-							{"myores:chromium",			"chromium"},
-							{"myores:manganese",		"manganese"},
-							{"myores:quartz",			"quartz"},
-							{"myores:chalcopyrite",		"chalcopyrite"},
-							{"myores:cobalt",			"cobalt"},
-							{"myores:uvarovite",		"uvarovite"},
-							{"myores:selenite",			"selenite"},
-							{"myores:miserite",			"miserite"},
-							{"myores:limonite",			"limonite"},
-							{"myores:sulfur",			"sulfur"},
-							{"myores:lapis_lazuli",		"lapis_lazuli"},
-							{"myores:emerald",			"emerald"},
-							{"myores:amethyst",			"amethyst"},
-					
-							{"mywhiteblock:block_black",    "block_black"},
-							{"mywhiteblock:block_blue",     "block_blue"},
-							{"mywhiteblock:block_brown",    "block_brown"},
-							{"mywhiteblock:block_cyan",     "block_cyan"},
-							{"mywhiteblock:block_darkgreen","block_darkgreen"},
-							{"mywhiteblock:block_darkgrey", "block_darkgrey"},
-							{"mywhiteblock:block_green",    "block_green"},
-							{"mywhiteblock:block_grey",     "block_grey"},
-							{"mywhiteblock:block_magenta",  "block_magenta"},
-							{"mywhiteblock:block_orange",   "block_orange"},
-							{"mywhiteblock:block_pink",     "block_pink"},
-							{"mywhiteblock:block_red",      "block_red"},
-							{"mywhiteblock:block_violet",   "block_violet"},
-							{"mywhiteblock:block_white",    "block_white"},
-							{"mywhiteblock:block_yellow",   "block_yellow"},
-							{"mywhiteblock:block",			"block"},
-							}
-
-		for i in ipairs(mat_table) do
-			local items = mat_table[i][1]
-			local mater = mat_table[i][2]
-
-			if ingotstack:get_name()== items then
-				material = mater
+		if ingotstack:get_name()=="default:sandstone" then
+				material = "default_sandstone"
 				make_ok = "1"
-			end
+		end
+
+		if ingotstack:get_name()=="default:desert_sand" then
+				material = "default_desert_sand"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:clay" then
+				material = "default_clay"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:desert_stone" then
+				material = "default_desert_stone"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:cobble" then
+				material = "default_cobble"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:stone" then
+				material = "default_stone"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:cactus" then
+				material = "default_cactus"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:sand" then
+				material = "default_sand"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:wood" then
+				material = "default_wood"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:pine_wood" then
+				material = "default_pine_wood"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:dirt" then
+				material = "default_dirt"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:brick" then
+				material = "default_brick"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:bronzeblock" then
+				material = "default_bronze_block"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:coalblock" then
+				material = "default_coal_block"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:copperblock" then
+				material = "default_copper_block"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:desert_cobble" then
+				material = "default_desert_cobble"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:diamondblock" then
+				material = "default_diamond_block"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:glass" then
+				material = "default_glass"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:goldblock" then
+				material = "default_gold_block"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:gravel" then
+				material = "default_gravel"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:ice" then
+				material = "default_ice"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:jungletree" then
+				material = "default_jungletree"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:junglewood" then
+				material = "default_junglewood"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:mese" then
+				material = "default_mese"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:mossycobble" then
+				material = "default_mossycobble"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:obsidian" then
+				material = "default_obsidian"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:obsidian_glass" then
+				material = "default_obsidian_glass"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:obsidianbrick" then
+				material = "default_obsidian_brick"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:pinetree" then
+				material = "default_pinetree"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:sanddstonebrick" then
+				material = "default_sandstone_brick"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:snowblock" then
+				material = "default_snow"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:steelblock" then
+				material = "default_steel_block"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:stonebrick" then
+				material = "default_stone_brick"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="default:tree" then
+				material = "default_tree"
+				make_ok = "1"
+		end
+
+		if ingotstack:get_name()=="farming:straw" then
+				material = "farming_straw"
+				make_ok = "1"
+		end
+
+----------------------------------------------------------------------------
+--wool
+
+		if ingotstack:get_name()=="wool:white" then
+				material = "wool_white"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:black" then
+				material = "wool_black"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:blue" then
+				material = "wool_blue"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:brown" then
+				material = "wool_brown"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:cyan" then
+				material = "wool_cyan"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:dark_green" then
+				material = "wool_dark_green"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:dark_grey" then
+				material = "wool_dark_grey"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:green" then
+				material = "wool_green"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:grey" then
+				material = "wool_grey"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:magenta" then
+				material = "wool_magenta"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:orange" then
+				material = "wool_orange"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:pink" then
+				material = "wool_pink"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:red" then
+				material = "wool_red"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:violet" then
+				material = "wool_violet"
+				make_ok = "1"
+		end
+		if ingotstack:get_name()=="wool:yellow" then
+				material = "wool_yellow"
+				make_ok = "1"
 		end
 
 ----------------------------------------------------------------------
@@ -535,7 +633,7 @@ end
 
 --Craft
 
-minetest.register_craft({
+core.register_craft({
 		output = 'myholeinthewall:machine',
 		recipe = {
 			{'default:coalblock', 'default:coalblock', 'default:coalblock'},
