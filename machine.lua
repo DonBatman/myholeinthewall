@@ -21,32 +21,18 @@ core.register_node("myholeinthewall:machine", {
 	description = "Hole Machine",
 	inventory_image = "myholeinthewall_inventory_image.png",
 	tiles = {
-		"myholeinthewall_machine_top.png",
-		"myholeinthewall_machine_bottom.png",
-		"myholeinthewall_machine_side.png",
-		"myholeinthewall_machine_side.png",
-		"myholeinthewall_machine_side.png",
-		"myholeinthewall_machine_front.png"
+		"myholeinthewall_machine.png",
 		},
-	drawtype = "nodebox",
+	drawtype = "mesh",
+	mesh = "myholeinthewall_machine.obj",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=2},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.375, -0.375, -0.375, 0.375, 0.375, 0.375}, 
-			{-0.5, 0.375, -0.5, 0.5, 0.5, 0.5}, 
-			{0.1875, -0.5, -0.375, 0.375, -0.375, -0.1875}, 
-			{0.1875, -0.5, 0.1875, 0.375, -0.375, 0.375}, 
-			{-0.375, -0.5, -0.375, -0.1875, -0.375, -0.1875},
-			{-0.375, -0.5, 0.1875, -0.1875, -0.375, 0.375}, 
-		}
-	},
+
 	selection_box = {
 		type = "fixed",
 		fixed = {
-			{-0.375, -0.5, -0.375, 0.375, 0.5, 0.375},
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
 		}
 	},
     on_place = function(itemstack, placer, pointed_thing)
@@ -154,27 +140,16 @@ core.register_node("myholeinthewall:machine", {
             )
         end
     end,
-
-
-
-
-
-
-
 })
 
 
 core.register_node("myholeinthewall:machine_top", {
 	description = "Hole Machine",
 	tiles = {
-		"myholeinthewall_machinetop_top.png",
-		"myholeinthewall_machinetop_bottom.png^[transformR180",
-		"myholeinthewall_machinetop_rside.png",
-		"myholeinthewall_machinetop_lside.png",
-		"myholeinthewall_machinetop_back.png",
-		"myholeinthewall_machinetop_front.png"
+		"myholeinthewall_air.png",
 		},
 	drawtype = "nodebox",
+    use_texture_alpha = true,
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "myholeinthewall:machine",
@@ -182,14 +157,7 @@ core.register_node("myholeinthewall:machine_top", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.1875, 0.0625, -0.125, 0.1875, 0.5, 0.3125}, 
-			{-0.1875, 0.125, -0.1875, 0.1875, 0.4375, 0.375}, 
-			{-0.1875, -0.5, 0.375, -0.0625, 0.3125, 0.5}, 
-			{0.0625, -0.5, 0.375, 0.1875, 0.3125, 0.5}, 
-			{-0.0625, -0.25, -0.0625, 0, 0.5, 0}, 
-			{-0.1875, 0.3125, 0.375, 0.1875, 0.375, 0.4375}, 
-			{0.1875, 0.1875, -0.0625, 0.25, 0.375, 0.125}, 
-			{0.1875, 0.25, -0.5, 0.25, 0.3125, 0}, 
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
 		}
 	},
 
@@ -613,6 +581,12 @@ if fields["diamondh"] then
 		end
 		if ingotstack:get_name()=="wool:yellow" then
 				material = "wool_yellow"
+				make_ok = "1"
+		end
+
+
+		if ingotstack:get_name()=="mywhiteblock:block" then
+				material = "mywhiteblock_block"
 				make_ok = "1"
 		end
 

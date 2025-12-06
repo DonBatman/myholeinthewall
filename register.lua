@@ -414,7 +414,15 @@ myholeinthewall.register_all(--material, description, image, groups, craft item
 	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
 	"wool_yellow"
 	)
+--My White Block
 
+myholeinthewall.register_all(--material, description, image, groups, craft item
+	"mywhiteblock_block", 
+	"Block", 
+	"mywhiteblock_white.png",
+	"{cracky = 1, oddly_breakable_by_hand = 1,not_in_creative_inventory=1}",
+	"mywhiteblock_block"
+	)
 
 
 
