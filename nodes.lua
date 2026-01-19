@@ -208,6 +208,23 @@ core.register_node("myholeinthewall:o_half_"..mat,{
 	},
 	on_place = core.rotate_node,
 })
+
+if core.get_modpath("lucky_block") then
+	lucky_block:add_blocks({
+		{"dro", {"myholeinthewall:diamond_"..mat}, 25},
+		{"dro", {"myholeinthewall:diamond_rough_"..mat}, 25},
+		{"dro", {"myholeinthewall:cross_"..mat}, 25},
+		{"dro", {"myholeinthewall:cross_iron_"..mat}, 25},
+		{"dro", {"myholeinthewall:o_"..mat}, 25},
+		{"dro", {"myholeinthewall:x_"..mat}, 25},
+		{"dro", {"myholeinthewall:diamond_half_"..mat}, 25},
+		{"dro", {"myholeinthewall:diamond_rough_half_"..mat}, 25},
+		{"dro", {"myholeinthewall:cross_half_"..mat}, 25},
+		{"dro", {"myholeinthewall:cross_iron_half_"..mat}, 25},
+		{"dro", {"myholeinthewall:o_"..mat}, 25},
+		{"dro", {"myholeinthewall:x_"..mat}, 25},
+	})
+end
 end
 
 
